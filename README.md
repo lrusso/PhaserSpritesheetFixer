@@ -5,3 +5,11 @@ Phaser Spritesheet Fixer in JavaScript using WebGL. Just select the spritesheet 
 ## Web:
 
 https://lrusso.github.io/PhaserSpritesheetFixer/PhaserSpritesheetFixer.htm
+
+## Test.png Spritesheet - Before
+
+![alt screenshot](https://raw.githubusercontent.com/lrusso/PhaserSpritesheetFixer/master/TestBefore.png)
+
+## Test.png Spritesheet - After
+
+![alt screenshot](https://raw.githubusercontent.com/lrusso/PhaserSpritesheetFixer/master/TestAfter.png)
