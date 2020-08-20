@@ -6,6 +6,13 @@ Phaser Spritesheet Fixer in JavaScript using WebGL. Just select the spritesheet 
 
 https://lrusso.github.io/PhaserSpritesheetFixer/PhaserSpritesheetFixer.htm
 
+## Updating your spritesheet code
+
+```diff
+-this.load.spritesheet("dog", dogSprite, 32, 32, 30);
++this.load.spritesheet("dog", dogSprite, 32, 32, 30, 1, 2);
+```
+
 ## Test.png Spritesheet - Before
 
 ![alt screenshot](https://raw.githubusercontent.com/lrusso/PhaserSpritesheetFixer/master/TestBefore.png)
