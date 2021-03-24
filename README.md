@@ -20,3 +20,7 @@ https://lrusso.github.io/PhaserSpritesheetFixer/PhaserSpritesheetFixer.htm
 ## Test.png Spritesheet - After
 
 ![alt screenshot](https://raw.githubusercontent.com/lrusso/PhaserSpritesheetFixer/master/TestAfter.png)
+
+## See also:
+
+https://github.com/lrusso/PhaserSpritesheetGenerator
