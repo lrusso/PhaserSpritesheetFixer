@@ -4,14 +4,13 @@
 		<meta charset="UTF-8">
 		<title>Phaser Spritesheet Fixer</title>
 		<style>
-			html{margin:0;padding:0}
-			body{margin:0;padding:0;background-color:#272727}
+			html,body{margin:0;padding:0;background-color:white}
 			canvas{display:none}
-			div{position:absolute;left:0;right:0;top:0;width:1024px;margin:0 auto;background-color:silver}
+			div{position:absolute;left:0;right:0;top:0;width:auto}
 			input[type=text]{height:30px;width:90px;font-family:Arial;font-size:13px;margin:0;padding:0;box-sizing:border-box}
 			input[type=file]{height:30px;font-family:Arial;font-size:13px;line-height:30px;vertical-align:top;margin:0;padding:0;box-sizing:border-box}
 			select{height:30px;width:90px;font-family:Arial;font-size:13px;margin:0;padding:0;background-color:white;border:1px solid silver;}
-			img{display:block;vertical-align:top}
+			img{display:inline-block}
 		</style>
 	</head>
 	<body>
@@ -22,7 +21,7 @@
 			<input type="text" id="tileWidth" placeholder="tileWidth">
 			<input type="text" id="tileHeight" placeholder="tileHeight">
 			<input type="file" id="screenshot">
-			<img width="1024" height="500" id="finalResult" alt="banner" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4wQQEjQ35agTNQAAAAxJREFUCNdjOH78OAAErgJW23qXwQAAAABJRU5ErkJggg==">
+			<img width="1024" height="500" id="finalResult" alt="finalResult" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5AodAgAMo/D8kgAAAAtJREFUCNdj+A8EAAn7A/1jJsWPAAAAAElFTkSuQmCC">
 		</div>
 
 		<script>
