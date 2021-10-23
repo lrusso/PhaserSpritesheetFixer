@@ -6,7 +6,7 @@ Phaser Spritesheet Fixer in JavaScript using WebGL.
 
 * Select the spritesheet image file.
 * Set the tileWidth and tileHeight values.
-* Click in the 'Generated Fixed Spritesheet' button.
+* Click in the 'GENERATE FIXED SPRITESHEET' button.
 * Download the generated spritesheet image that will have with a 1px margin arround each tile.
 
 ## Web:
