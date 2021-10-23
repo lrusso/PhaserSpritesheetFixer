@@ -9,6 +9,7 @@
 			div{position:absolute;left:0;right:0;top:0;width:auto}
 			input[type=text]{height:30px;width:90px;font-family:Arial;font-size:13px;margin:0;padding:0;box-sizing:border-box}
 			input[type=file]{height:30px;font-family:Arial;font-size:13px;line-height:30px;vertical-align:top;margin:0;padding:0;box-sizing:border-box}
+			input[type=button]{display:none}
 			select{height:30px;width:90px;font-family:Arial;font-size:13px;margin:0;padding:0;background-color:white;border:1px solid silver;}
 			img{display:inline-block}
 		</style>
@@ -20,8 +21,9 @@
 		<div>
 			<input type="text" id="tileWidth" placeholder="tileWidth">
 			<input type="text" id="tileHeight" placeholder="tileHeight">
-			<input type="file" id="screenshot"><br />
-			<img width="1024" height="500" id="finalResult" alt="finalResult" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5AodAgAMo/D8kgAAAAtJREFUCNdj+A8EAAn7A/1jJsWPAAAAAElFTkSuQmCC">
+			<input type="file" id="screenshot">
+			<input type="button" id="generate" value="GENERATE FIXED SPRITESHEET"><br/>
+			<img width="1024" height="500" id="finalResult" alt=" " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5AodAgAMo/D8kgAAAAtJREFUCNdj+A8EAAn7A/1jJsWPAAAAAElFTkSuQmCC">
 		</div>
 
 		<script>
@@ -64,34 +66,42 @@
 								var image3 = new Image;
 								image3.onload = function()
 									{
-									// UPDATING THE ORIGINAL CANVAS SIZE TO THE IMAGE SIZE
-									canvasOriginal.width = image3.width;
-									canvasOriginal.height = image3.height;
-
-									// UPDATING THE DESTINATION CANVAS SIZE TO THE NEW IMAGE SIZE THAT IT WILL CONTAIN
-									canvasDestination.width = image3.width + ((image3.width / tileWidth.value) * 2);
-									canvasDestination.height = image3.height + ((image3.height / tileHeight.value) * 2);
-
-									// DRAWING THE ORIGINAL IMAGE IN THE ORIGINAL CANVAS
-									context.drawImage(image3, 0, 0, image3.width, image3.height);
-
-									// LOOPING Y
-									for (var i = 0; i < image3.height / tileHeight.value; i++)
+									try
 										{
-										var marginY = (i * tileHeight.value + (i*2) + 1);
+										// UPDATING THE ORIGINAL CANVAS SIZE TO THE IMAGE SIZE
+										canvasOriginal.width = image3.width;
+										canvasOriginal.height = image3.height;
 
-										// LOOPING X
-										for (var j = 0; j < image3.width / tileWidth.value; j++)
+										// UPDATING THE DESTINATION CANVAS SIZE TO THE NEW IMAGE SIZE THAT IT WILL CONTAIN
+										canvasDestination.width = image3.width + ((image3.width / tileWidth.value) * 2);
+										canvasDestination.height = image3.height + ((image3.height / tileHeight.value) * 2);
+
+										// DRAWING THE ORIGINAL IMAGE IN THE ORIGINAL CANVAS
+										context.drawImage(image3, 0, 0, image3.width, image3.height);
+
+										// LOOPING Y
+										for (var i = 0; i < image3.height / tileHeight.value; i++)
 											{
-											var ImageData = context.getImageData(j * tileWidth.value, i * tileHeight.value, tileWidth.value, tileHeight.value);
-											canvasDestination.getContext("2d").putImageData(ImageData, (j * tileWidth.value + (j*2)) + 1, marginY);
-											}
-										}
+											var marginY = (i * tileHeight.value + (i*2) + 1);
 
-									// EXPORTING THE PICTURE AS A PNG IMAGE IN BASE64 FORMAT
-									document.getElementById("finalResult").style.width = canvasDestination.width + "px";
-									document.getElementById("finalResult").style.height = canvasDestination.height + "px";
-									document.getElementById("finalResult").src = document.getElementById("myCanvas2").toDataURL("data/png");
+											// LOOPING X
+											for (var j = 0; j < image3.width / tileWidth.value; j++)
+												{
+												var ImageData = context.getImageData(j * tileWidth.value, i * tileHeight.value, tileWidth.value, tileHeight.value);
+												canvasDestination.getContext("2d").putImageData(ImageData, (j * tileWidth.value + (j*2)) + 1, marginY);
+												}
+											}
+
+										// EXPORTING THE PICTURE AS A PNG IMAGE IN BASE64 FORMAT
+										document.getElementById("finalResult").style.width = canvasDestination.width + "px";
+										document.getElementById("finalResult").style.height = canvasDestination.height + "px";
+										document.getElementById("finalResult").src = document.getElementById("myCanvas2").toDataURL("data/png");
+										}
+										catch(err)
+										{
+										// CLEARING THE FINAL RESULT IMAGE
+										document.getElementById("finalResult").src = "";
+										}
 									};
 								image3.src = filereader.result;
 								};
@@ -107,17 +117,20 @@
 						}
 						catch(err)
 						{
-						// EXPORTING THE PICTURE AS A PNG IMAGE IN BASE64 FORMAT
-						document.getElementById("finalResult").src = canvas.toDataURL("data/png");
+						// CLEARING THE FINAL RESULT IMAGE
+						document.getElementById("finalResult").src = "";
 						}
 					}
 
-				// SETTING WHAT WILL HAPPEN WHEN THE USER TYPES IN A INPUT BOX
-				document.getElementById("tileWidth").addEventListener("input",function(e){update()});
-				document.getElementById("tileHeight").addEventListener("input",function(e){update()});
+				// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON THE GENERATE BUTTON
+				document.getElementById("generate").addEventListener("click",function(e){update()});
 
 				// SETTING WHAT WILL HAPPEN WHEN THE USER SELECTS A FILE
-				document.getElementById("screenshot").addEventListener("change",function(e){update()});
+				document.getElementById("screenshot").addEventListener("change",function(e)
+					{
+					// SHOWING THE GENERATE FIXED SPRITESHEET BUTTON
+					document.getElementById("generate").style.display = "inline-block";
+					});
 				});
 		</script>
 	</body>
