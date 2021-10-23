@@ -1,6 +1,12 @@
 # Phaser Spritesheet Fixer
 
-Phaser Spritesheet Fixer in JavaScript using WebGL. Just select the spritesheet image file, set the tileWidth and tileHeight values and the Web will generate a new image (spritesheet) with a 1px margin in each tile. 
+Phaser Spritesheet Fixer in JavaScript using WebGL.
+
+## How does it work?
+
+* Select the spritesheet image file.
+* Set the tileWidth and tileHeight values.
+* Download the generated spritesheet image that will have with a 1px margin in each tile.
 
 ## Web:
 
@@ -24,3 +30,5 @@ https://lrusso.github.io/PhaserSpritesheetFixer/PhaserSpritesheetFixer.htm
 ## See also:
 
 https://github.com/lrusso/PhaserSpritesheetGenerator
+
+https://github.com/lrusso/PhaserSpritesheetCutter
